@@ -1,0 +1,52 @@
+{{ define "main" }}
+<section class="section container-fluid mt-n3 pb-3">
+  <div class="row justify-content-center">
+    <div class="col-lg-12 text-center">
+      <h1 class="mt-0">{{ .Title }}</h1>
+    </div>
+    <div class="col-lg-9 col-xl-8 text-center">
+      <p class="lead">{{ .Params.lead | safeHTML }}</p>
+      <a class="btn btn-primary btn-lg px-4 mb-2" href="{{ "docs/usage/install" | relURL }}" role="button">Get started</a>
+      <a class="btn btn-primary btn-lg px-4 mb-2" href="{{ .Site.Data.project.latestAssetUrl }}" role="button">Download {{ .Site.Data.project.name }}</a>
+      <p class="meta">Open-source <a href="{{.Site.Data.project.projectUrl}}blob/master/LICENSE" target="_blank">Apache-2.0 License</a>. {{ .Site.Data.project.name }} <a href="{{ .Site.Data.project.latestReleaseUrl }}" target="_blank">v{{ .Site.Data.project.latestReleaseTagName }}</a>.</p>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ define "sidebar-prefooter" }}
+<section class="section section-sm">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-5">
+        <h2 class="h4">Open</h2>
+        <p>AzureCP is completely free and <a href="https://github.com/Yvand/AzureCP" target="_blank">open source</a>.<br>
+          Total downloads: 3540<br>
+          Downloads of latest version: 243
+        </p>
+      </div>
+      <div class="col-lg-5">
+        <h2 class="h4">Fully-featured</h2>
+        <p class="text-left">Query multiple Azure Active Directory tenants in parallel.<br>
+          Customize the display of results.<br>
+          Return group membership (augmentation).
+        </p>
+      </div>
+      <div class="col-lg-5">
+        <h2 class="h4">Highly customizable</h2>
+        <p>Administrators can configure many settings through PowerShell or administration pages.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ define "sidebar-footer" }}
+<section class="section section-sm container-fluid">
+  <div class="row justify-content-center text-center">
+    <div class="col-lg-9">
+      {{- .Content -}}
+    </div>
+  </div>
+</section>
+{{ end }}

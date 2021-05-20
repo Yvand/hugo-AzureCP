@@ -1,0 +1,59 @@
+# Meta Data for SEO
+
+## Homepage
+title = "AzureCP"
+titleSeparator = "-"
+titleAddition = "Claims provider for SharePoint 2019 / 2016 / 2013"
+description = "AzureCP connects SharePoint with Active Directory and LDAP servers to enhance the people picker with a great search experience in federated authentication"
+
+## Open Graph + Twitter Cards
+#images = ["doks.png"]
+#twitterSite = "yvand"
+#twitterCreator = "yvand"
+#facebookAuthor = "yvand.duhamel"
+#facebookPublisher = "yvand.duhamel"
+ogLocale = "en_US"
+
+## JSON-LD
+schemaType = "Organization"
+#schemaLogo = "logo-doks.png"
+#schemaTwitter = "https://twitter.com/yvand"
+schemaLinkedIn = "https://www.linkedin.com/in/yvand/"
+schemaGitHub = "https://github.com/Yvand"
+schemaSection = "blog"
+
+## Sitelinks Search Box
+siteLinksSearchBox = false
+
+## Chrome Browser
+themeColor = "#fff"
+
+# Images
+quality = 85
+bgColor = "#fff"
+landscapePhotoWidths = [900, 800, 700, 600, 500]
+portraitPhotoWidths = [800, 700, 600, 500]
+lqipWidth = "20x"
+
+# Footer
+# footer = "Powered by <a href=\"https://www.netlify.com/\">Netlify</a>, <a href=\"https://gohugo.io/\">Hugo</a>, and <a href=\"https://getdoks.org/\">Doks</a>"
+footer = "Site built with <a href=\"https://gohugo.io/\" class=\"gdoc-footer__link\">Hugo</a>. Project developed and maintained with ❤️ by <a href=\"https://www.linkedin.com/in/yvand/\" class=\"gdoc-footer__link\">Yvan Duhamel</a>."
+
+# Alert
+alert = false
+alertText = "Like AzureCP? <a class=\"alert-link\" href=\"https://github.com/Yvand/AzureCP/stargazers\">Star on GitHub</a>. Thanks!</a>"
+
+# Edit Page
+docsRepo = "https://github.com/Yvand/hugo-AzureCP"
+editPage = true
+
+[options]
+  lazySizes = true
+  clipBoard = true
+  instantPage = true
+  flexSearch = true
+  darkMode = true
+  bootStrapJs = false
+  breadCrumb = false
+  highLight = true
+  kaTex = false
