@@ -1,2 +1,2 @@
-baseurl = "https://www.azurecp.com/"
+baseurl = "https://azurecp.netlify.app/"
 canonifyURLs = true
