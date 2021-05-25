@@ -5,7 +5,7 @@ var GitHubStatistics;
 (function (GitHubStatistics) {
     class RepoStats {
         constructor() {
-            this.url = "https:/azfunc-repository-stats.azurewebsites.net/api/GetLatestDocument";
+            this.url = "https://azfunc-repository-stats.azurewebsites.net/api/GetLatestDocument";
         }
         getLatestStat() {
             //console.log("Sending query to " + this.url);            

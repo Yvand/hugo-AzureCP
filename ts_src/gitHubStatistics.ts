@@ -15,7 +15,7 @@ namespace GitHubStatistics {
     }
 
     export class RepoStats {
-        url: string = "https:/azfunc-repository-stats.azurewebsites.net/api/GetLatestDocument";
+        url: string = "https://azfunc-repository-stats.azurewebsites.net/api/GetLatestDocument";
         getLatestStat() {
             //console.log("Sending query to " + this.url);            
             $.ajax({
