@@ -32,4 +32,4 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' https://code.jquery.com; script-src 'self' https://azfunc-repository-stats.azurewebsites.net;"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://code.jquery.com https://azfunc-repository-stats.azurewebsites.net;"
