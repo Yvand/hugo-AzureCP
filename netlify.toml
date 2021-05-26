@@ -33,3 +33,4 @@
   for = "/*"
   [headers.values]
     Content-Security-Policy = "default-src 'self'; script-src 'self' https://code.jquery.com https://azfunc-repository-stats.azurewebsites.net;"
+    cache-control = "max-age=0, must-revalidate, public"
