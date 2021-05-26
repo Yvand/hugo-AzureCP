@@ -18,7 +18,7 @@
 
 [[main]]
   name = "Docs"
-  url = "/docs/usage/install/"
+  url = "/docs/overview/introduction/"
   weight = 10
 
 [[social]]
