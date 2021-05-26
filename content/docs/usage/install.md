@@ -46,7 +46,7 @@ Execute the following steps on the server running the central administration:
   .DESCRIPTION
       Run this script on ALL SharePoint servers which run the service "Microsoft SharePoint Foundation Web Application", sequentially (not in parallel), starting with the one running central administration (even if it does not run the service):
   .LINK
-      https://www.AzureCP.com/docs/usage/install/
+      https://azurecp.yvand.net/docs/usage/install/
   #>
 
   # To use this script, you only need to edit the $fullpath variable below
@@ -64,8 +64,8 @@ Execute the following steps on the server running the central administration:
 
   # Test 2: Install-SPSolution will fail if any feature in the WSP solution is already installed on the current server
   if ($null -ne (Get-SPFeature| ?{$_.DisplayName -like "$claimsprovider*"})) {
-      Write-Error "Cannot continue because current server already has features of $claimsprovider, Visit https://www.AzureCP.com/docs/help/fix-setup-issues/ to fix this."
-      throw ("Cannot continue because current server already has features of $claimsprovider, Visit https://www.AzureCP.com/docs/help/fix-setup-issues/ to fix this.")
+      Write-Error "Cannot continue because current server already has features of $claimsprovider, Visit https://azurecp.yvand.net/docs/help/fix-setup-issues/ to fix this."
+      throw ("Cannot continue because current server already has features of $claimsprovider, Visit https://azurecp.yvand.net/docs/help/fix-setup-issues/ to fix this.")
   }
 
   # Add the solution if it's not already present (only the 1st server will do it)
@@ -117,7 +117,7 @@ For every other SharePoint server which **does NOT run the service "Microsoft Sh
       This script needs to be executed each time you install/update AzureCP, on all SharePoint servers that do not run SharePoint service “Microsoft SharePoint Foundation Web Application”.
       Set $assemblies to the path where 'AzureCP-XXXX-dependencies.zip' was unzipped
   .LINK
-      https://www.AzureCP.com/docs/usage/install/
+      https://azurecp.yvand.net/docs/usage/install/
   #>
 
   $assemblies = Get-ChildItem -Path "C:\AzureCP-XXXX-dependencies-unzipped\*.dll"
