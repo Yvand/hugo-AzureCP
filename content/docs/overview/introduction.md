@@ -16,7 +16,7 @@ toc: true
 ## Use case
 
 AzureCP is useful when SharePoint 2019 / 2016 / 2013 is [federated with Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial).  
-It runs inside SharePoint and uses [Microsoft Graph](https://developer.microsoft.com/en-us/graph/) to connect to your Azure Active Directory tenant(s) and return users and groups to SharePoint in various scenarios, such as the people picker.
+It runs inside SharePoint and uses [Microsoft Graph](https://developer.microsoft.com/en-us/graph/) to query your Azure Active Directory tenant(s) and return users and groups to SharePoint in various scenarios, such as the people picker.
 
 ![people-picker-AzureCP](/images/people-picker-AzureCP.png)
 
