@@ -6,7 +6,7 @@
     </div>
     <div class="col-lg-9 col-xl-8 text-center">
       <p class="lead">{{ .Params.lead | safeHTML }}</p>
-      <a class="btn btn-primary btn-lg px-4 mb-2" href="{{ "docs/overview/introduction" | relURL }}" role="button">Get started</a>
+      <a class="btn btn-primary btn-lg px-4 mb-2" href="{{ "docs/overview/introduction/" | relURL }}" role="button">Get started</a>
       <a class="btn btn-primary btn-lg px-4 mb-2" href="{{ .Site.Data.project.latestAssetUrl }}" role="button">Download {{ .Site.Data.project.name }}</a>
       <p class="meta">Open-source <a href="{{.Site.Data.project.projectUrl}}blob/master/LICENSE" target="_blank">Apache-2.0 License</a>. {{ .Site.Data.project.name }} <a href="{{ .Site.Data.project.latestReleaseUrl }}" target="_blank">v{{ .Site.Data.project.latestReleaseTagName }}</a>.</p>
     </div>
