@@ -1,7 +1,7 @@
 ---
 title: "Register an application in Azure AD"
 description: ""
-lead: "Register an application in your Azure Active Directory tenant and grant it the required permissions to allow AzureCP to query it."
+lead: "This page will guide you to register an application for AzureCP in your tenant and grant it the required permissions."
 date: 2021-05-20T10:45:06Z
 lastmod: 2021-05-20T10:45:06Z
 draft: false
@@ -13,15 +13,14 @@ weight: 805
 toc: true
 ---
 
-## Prerequisites
+<!-- ## Prerequisites
 
-If you are not a global administrator, you need to have permissions to [create an app registration](https://docs.microsoft.com/en-us/azure/active-directory/roles/custom-available-permissions) and to [grant it tenant-wide admin consent](https://docs.microsoft.com/en-us/azure/active-directory/roles/custom-consent-permissions#granting-permissions-to-apps-on-behalf-of-all-admin-consent) in your Azure Active Directory tenant.
+If you are not a global administrator, you need to have permissions to [create an app registration](https://docs.microsoft.com/en-us/azure/active-directory/roles/custom-available-permissions) and to [grant it tenant-wide admin consent](https://docs.microsoft.com/en-us/azure/active-directory/roles/custom-consent-permissions#granting-permissions-to-apps-on-behalf-of-all-admin-consent) in your Azure Active Directory tenant. 
+-->
 
 ## Permissions required
 
-AzureCP needs 2 application permissions (no delegated permission):
-- "Group.Read.All"
-- "User.Read.All"
+AzureCP needs application (not delegated) permissions Group.Read.All and User.Read.All.
 
 ## Create the app registration
 
