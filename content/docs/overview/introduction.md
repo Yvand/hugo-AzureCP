@@ -15,19 +15,24 @@ toc: true
 
 ## Use case
 
-AzureCP is useful when SharePoint Subscription / 2019 / 2016 / 2013 is federated with Azure Active Directory using [WS-Federation](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial) or [OpenID Connect](https://docs.microsoft.com/en-us/sharepoint/security-for-sharepoint-server/oidc-1-0-authentication).  
+AzureCP is useful when SharePoint is federated with Azure Active Directory using [WS-Federation](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial) or [OpenID Connect](https://docs.microsoft.com/en-us/sharepoint/security-for-sharepoint-server/oidc-1-0-authentication).  
 It runs inside SharePoint and queries your Azure Active Directory tenant(s) to find users and groups:
 
 ![people-picker-AzureCP](/images/people-picker-AzureCP.png)
 
 To allow AzureCP to query your tenant, you need to [register a specific application]({{< ref "/docs/usage/register-application" >}}) in your Azure Active Directory tenant and grant it some permissions.
 
+## Compatibility
+
+LDAPCP is fully compatible with all the supported versions of SharePoint Server: SharePoint Subscription, SharePoint 2019, SharePoint 2016 and SharePoint 2013.
+
 ## Features
 
+- Improve the search in the people picker
 - Query multiple Azure Active Directory tenants in parallel.
-- Easy to configure through dedicated pages in central administration, or using PowerShell.
-- Return group membership of Azure AD users (augmentation).
-- Populate the metadata (e.g. email, display name) of entities.
+- Get group membership of Azure AD users (augmentation).
+- Populate the metadata (e.g. email, display name) of the entities.
+- Easy to configure through PowerShell or administration pages.
 - No dependency on any SharePoint service application.
 
 ## Customization
