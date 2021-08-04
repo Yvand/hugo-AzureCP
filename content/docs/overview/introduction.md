@@ -3,7 +3,7 @@ title: "Introduction"
 description: ""
 lead: ""
 date: 2021-05-26T08:14:13Z
-lastmod: 2021-05-26T08:14:13Z
+lastmod: 2021-08-04T11:15:29Z
 draft: false
 images: []
 menu: 
@@ -15,10 +15,12 @@ toc: true
 
 ## Use case
 
-AzureCP is useful when SharePoint 2019 / 2016 / 2013 is [federated with Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial).  
-It runs inside SharePoint and uses [Microsoft Graph](https://developer.microsoft.com/en-us/graph/) to query your Azure Active Directory tenant(s) and return users and groups to SharePoint in various scenarios, such as the people picker.
+AzureCP is useful when SharePoint Subscription / 2019 / 2016 / 2013 is federated with Azure Active Directory using [WS-Federation](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial) or [OpenID Connect](https://docs.microsoft.com/en-us/sharepoint/security-for-sharepoint-server/oidc-1-0-authentication).  
+It runs inside SharePoint and queries your Azure Active Directory tenant(s) to find users and groups:
 
 ![people-picker-AzureCP](/images/people-picker-AzureCP.png)
+
+To allow AzureCP to query your tenant, you need to [register a specific application]({{< ref "/docs/usage/register-application" >}}) in your Azure Active Directory tenant and grant it some permissions.
 
 ## Features
 
