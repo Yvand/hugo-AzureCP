@@ -3,7 +3,7 @@
 ## Homepage
 title = "AzureCP"
 titleSeparator = "-"
-titleAddition = "Claims provider for SharePoint Subscription / 2019 / 2016 / 2013"
+titleAddition = "Claims provider for Azure AD authentication in SharePoint Subscription / 2019 / 2016 / 2013"
 description = "AzureCP connects SharePoint with Active Directory and LDAP servers to enhance the people picker with a great search experience in federated authentication"
 
 ## Open Graph + Twitter Cards
