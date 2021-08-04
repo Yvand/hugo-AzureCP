@@ -24,7 +24,7 @@ To allow AzureCP to query your tenant, you need to [register a specific applicat
 
 ## Compatibility
 
-LDAPCP is fully compatible with all the supported versions of SharePoint Server: SharePoint Subscription, SharePoint 2019, SharePoint 2016 and SharePoint 2013.
+AzureCP is fully compatible with all the supported versions of SharePoint Server: SharePoint Subscription, SharePoint 2019, SharePoint 2016 and SharePoint 2013.
 
 ## Features
 
