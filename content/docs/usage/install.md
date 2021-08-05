@@ -21,7 +21,7 @@ This page will guide you through the steps to install AzureCP in a safe and reli
 
 ## Deploy the solution
 
-{{< alert icon="💡" text="Always start a new PowerShell process to ensure using up to date persisted objects and avoid nasty errors." >}}
+{{< alert icon="💡" text="Always start a new PowerShell process to ensure using up to date persisted objects and avoid nasty errors." />}}
 
 Execute the following steps on the server running the central administration:
 
@@ -97,13 +97,13 @@ Execute the following steps on the server running the central administration:
 
 - Visit central administration > System Settings > Manage farm solutions: Confirm the solution is "Globally deployed".
 
-{{< alert icon="💡" text="If you ran `Install-SPSolution` with `-Local`, but not on every SharePoint server running the service \"Microsoft SharePoint Foundation Web Application\", the solution will NOT be \"Globally deployed\" and SharePoint will NOT activate AzureCP features." >}}
+{{< alert icon="💡" text="If you ran `Install-SPSolution` with `-Local`, but not on every SharePoint server running the service \"Microsoft SharePoint Foundation Web Application\", the solution will NOT be \"Globally deployed\" and SharePoint will NOT activate AzureCP features." />}}
 
 ## Finish the installation
 
 For every other SharePoint server which **does NOT run the service "Microsoft SharePoint Foundation Web Application"**, AzureCP bits (azurecp.dll and its dependent assemblies) must be added manually to their GAC using these steps:
 
-{{< alert icon="💡" text="This applies regardless of how `Install-SPSolution` or `Update-SPSolution` was executed" >}}
+{{< alert icon="💡" text="This applies regardless of how `Install-SPSolution` or `Update-SPSolution` was executed" />}}
 
 - Download the package ['AzureCP-XXXX-dependencies.zip'](https://github.com/Yvand/AzureCP/releases) corresponding to the version you downloaded (expand the "Assets" to find it).
 - Unzip the archive to a local folder.
