@@ -41,7 +41,7 @@ You can register the application using either:
     * Remove the default permission.
     * Add a permission > Select "Microsoft Graph" > "Application permissions". Find and add "Group.Read.All" and "User.Read.All"
     * Click on "Grant admin consent for TenantName" > Yes
-{{< alert icon="💡" text="After this operation, you should have only permissions \"Group.Read.All\" and \"User.Read.All\", of type \"Application\", with status \"Granted\"." >}}
+{{< alert icon="💡" text="After this operation, you should have only permissions \"Group.Read.All\" and \"User.Read.All\", of type \"Application\", with status \"Granted\"." />}}
 1. Click on "Certificates & secrets": AzureCP supports both a certificate and a secret, choose either option depending on your needs.
 
 ### Create the app registration using m365 cli
