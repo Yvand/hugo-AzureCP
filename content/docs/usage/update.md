@@ -3,7 +3,7 @@ title: "Update"
 description: "How to update AzureCP"
 lead: "Update AzureCP in the SharePoint farm"
 date: 2021-05-17T10:37:57Z
-lastmod: 2021-05-17T10:37:57Z
+lastmod: 2021-08-06T11:15:29Z
 draft: false
 images: []
 menu: 
@@ -30,10 +30,10 @@ On the server running the central administration:
   {{< alert icon="💡" text="Be patient, cmdlet Update-SPSolution triggers a one-time timer job on the SharePoint servers and this may take a minute or 2." />}}
   > If status shows "Error", restart the SharePoint timer service on servers where depployment failed, start a new PowerShell process and run Update-SPSolution again.
 
-## Finish the installation
+## Finalize the update
 
 `Update-SPSolution` updates the bits only on the servers running the service "Microsoft SharePoint Foundation Web Application", but AzureCP must be updated on all SharePoint servers.  
-To complete the update, follow the steps described in the section ["Finish the installation" in the installation page]({{< relref "install.md#finish-the-installation" >}}).
+To complete the update, follow the steps described in the section ["Finalize the installation" in the install page]({{< relref "install.md#finalize-the-installation" >}}).
 
 ## Breaking changes
 

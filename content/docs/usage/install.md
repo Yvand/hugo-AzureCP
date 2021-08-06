@@ -105,9 +105,8 @@ Execute the following steps:
 
 ## Finalize the installation
 
-{{< alert icon="💡" text="This applies to both install (`Install-SPSolution`) and update (`Update-SPSolution`) scenarios." />}}
-
 This step is **very important** and applies to **all** SharePoint servers which do **NOT run the service "Microsoft SharePoint Foundation Web Application" and/or the central administration**.  
+{{< alert icon="💡" text="This step must be executed during both install (`Install-SPSolution`) and update (`Update-SPSolution`) scenarios." />}}
 For each of those servers, complete the steps below to manually add/update AzureCP bits (azurecp.dll and its dependent assemblies) in the GAC:
 
 - Download the package ['AzureCP-XXXX-dependencies.zip'](https://github.com/Yvand/AzureCP/releases) corresponding to the version you downloaded (expand the "Assets" to find it).
