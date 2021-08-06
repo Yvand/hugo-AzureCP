@@ -3,7 +3,7 @@ title: "Configure"
 description: ""
 lead: "Configure AzureCP to fit your needs"
 date: 2021-05-17T14:06:29Z
-lastmod: 2021-05-17T14:06:29Z
+lastmod: 2021-08-06T11:15:29Z
 draft: false
 images: []
 menu: 
@@ -21,8 +21,8 @@ To perform the configuration, you first need to [register an application]({{< re
 
 AzureCP comes with 2 administration pages added in central administration > Security:
 
-- Global configuration: Add / remove LDAP servers and configure various settings.
-- Claim types configuration: Define the claim types, and their mapping with LDAP objects.
+- Global configuration: Add / remove Azure AD tenants and configure various settings.
+- Claim types configuration: Define the claim types, and their mapping with Azure AD users and groups.
 
 ## Configure with PowerShell
 
@@ -107,10 +107,10 @@ If Windows cannot validate them, the usual symptom is a hang during 1 minute upo
 Certificate validation is performed by lsass.exe, which uses the proxy configuration set with netsh.exe:
 
 ```text
-# To see proxy configuration
+# Show proxy configuration
 netsh winhttp show proxy
-# To see proxy configuration
+# Set proxy configuration
 netsh winhttp set proxy proxy-server="http=myproxy;https=sproxy:88" bypass-list="*.foo.com"
-# To remove proxy configuration
+# Reset proxy configuration
 netsh winhttp reset proxy
 ```
