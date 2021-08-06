@@ -3,7 +3,7 @@ title: "Introduction"
 description: ""
 lead: ""
 date: 2021-05-26T08:14:13Z
-lastmod: 2021-08-04T11:15:29Z
+lastmod: 2021-08-06T11:15:29Z
 draft: false
 images: []
 menu: 
@@ -20,7 +20,7 @@ It runs inside SharePoint and queries your Azure Active Directory tenant(s) to f
 
 ![people-picker-AzureCP](/images/people-picker-AzureCP.png)
 
-To allow AzureCP to query your tenant, you need to [register a specific application]({{< ref "/docs/usage/register-application" >}}) in your Azure Active Directory tenant and grant it some permissions.
+To query your Azure Active Directory tenant, AzureCP needs an app registration which you have to [create]({{< ref "/docs/usage/register-application" >}}).
 
 ## Compatibility
 
@@ -28,9 +28,9 @@ AzureCP is fully compatible with all the supported versions of SharePoint Server
 
 ## Features
 
-- Improve the search in the people picker
-- Query multiple Azure Active Directory tenants in parallel.
+- Fix the search in the people picker.
 - Get group membership of Azure AD users (augmentation).
+- Query multiple Azure Active Directory tenants in parallel.
 - Populate the metadata (e.g. email, display name) of the entities.
 - Easy to configure through PowerShell or administration pages.
 - No dependency on any SharePoint service application.

@@ -1,9 +1,9 @@
 ---
 title: "Register an application in Azure AD"
 description: ""
-lead: "This page will guide you to register an application for AzureCP in your tenant and grant it the required permissions."
+lead: "This page will guide through the steps you to register an application for AzureCP in your Azure AD tenant and grant the required permissions."
 date: 2021-05-20T10:45:06Z
-lastmod: 2021-05-20T10:45:06Z
+lastmod: 2021-08-06T11:15:29Z
 draft: false
 images: []
 menu: 

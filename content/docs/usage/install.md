@@ -3,7 +3,7 @@ title: "Install"
 description: "Install AzureCP"
 lead: "Install AzureCP in your SharePoint farm"
 date: 2021-05-20T10:45:52Z
-lastmod: 2021-05-20T10:45:52Z
+lastmod: 2021-08-06T11:15:29Z
 draft: false
 images: []
 menu: 
@@ -23,7 +23,7 @@ This page will guide you through the steps to install AzureCP in a safe and reli
 
 {{< alert icon="💡" text="Always start a new PowerShell process to ensure using up to date persisted objects and avoid nasty errors." />}}
 
-Execute the following steps on the server running the central administration:
+Execute the following steps:
 
 - Download [the latest version](https://github.com/Yvand/AzureCP/releases/latest) of AzureCP.wsp.
 - Install and deploy the solution, using either the __simple__ or the __safe__ method:
@@ -39,39 +39,43 @@ Execute the following steps on the server running the central administration:
   
   - __Safe__ method: Recommended for production environments with multiple servers:
 
+  {{< alert icon="💡" text="Run this script on ALL SharePoint servers running the service \"Microsoft SharePoint Foundation Web Application\" and/or the central administration, sequentially (not in parallel), starting with the server running the central administration." />}}
+
   ```powershell
   <#
   .SYNOPSIS
       Deploy "AzureCP.wsp" in a reliable way, to address reliability issues that may occur when deploying solutions in SharePoint (especially 2019) (and especially if there are many servers):
   .DESCRIPTION
-      Run this script on ALL SharePoint servers which run the service "Microsoft SharePoint Foundation Web Application", sequentially (not in parallel), starting with the one running central administration (even if it does not run the service):
+      Run this script on ALL SharePoint servers running the service "Microsoft SharePoint Foundation Web Application" and/or the central administration, sequentially (not in parallel), starting with the server running the central administration.
+      The script does not require any modification, you only need to set the variable $packagefullpath with the path to the solution file (used only on the 1st server)
   .LINK
-      https://azurecp.yvand.net/docs/usage/install/
+      https://www.AzureCP.com/docs/usage/install/
   #>
 
-  # To use this script, you only need to edit the $fullpath variable below
+  # To use this script, you only need to edit the variable $packagefullpath below
   $claimsprovider = "AzureCP"
-  $fullpath = "C:\Data\$claimsprovider.wsp"
+  $packagefullpath = "C:\Data\$claimsprovider.wsp"
   $packageName = "$claimsprovider.wsp"
 
-  # Perform checks to detect and prevent potential problems
-  # Test 1: Install-SPSolution will fail if claims provider is already installed on the current server
+  # Perform checks on the local server to detect and prevent potential problems
+  # Check 1: Install-SPSolution will fail if claims provider is already installed on the current server
   if ($null -ne (Get-SPClaimProvider -Identity $claimsprovider -ErrorAction SilentlyContinue)) {
       Write-Error "Cannot continue because current server already has claims provider $claimsprovider, which will cause an error when running Install-SPSolution."
       throw ("Cannot continue because current server already has claims provider $claimsprovider, which will cause an error when running Install-SPSolution.")
       Get-SPClaimProvider| ?{$_.DisplayName -like $claimsprovider}| Remove-SPClaimProvider
   }
 
-  # Test 2: Install-SPSolution will fail if any feature in the WSP solution is already installed on the current server
+  # Check 2: Install-SPSolution will fail if any feature in the WSP solution is already installed on the current server
   if ($null -ne (Get-SPFeature| ?{$_.DisplayName -like "$claimsprovider*"})) {
-      Write-Error "Cannot continue because current server already has features of $claimsprovider, Visit https://azurecp.yvand.net/docs/help/fix-setup-issues/ to fix this."
-      throw ("Cannot continue because current server already has features of $claimsprovider, Visit https://azurecp.yvand.net/docs/help/fix-setup-issues/ to fix this.")
+      Write-Error "Cannot continue because current server already has features of $claimsprovider, Visit https://www.AzureCP.com/docs/help/fix-setup-issues/ to fix this."
+      throw ("Cannot continue because current server already has features of $claimsprovider, Visit https://www.AzureCP.com/docs/help/fix-setup-issues/ to fix this.")
   }
 
-  # Add the solution if it's not already present (only the 1st server will do it)
+  Write-Host "All checks passed on this server, continuing..."
+  # Add the solution if it's not already present in the farm (only the 1st server will actually do this)
   if ($null -eq (Get-SPSolution -Identity $packageName -ErrorAction SilentlyContinue)) {
       Write-Host "Adding solution $packageName to the farm..."
-      Add-SPSolution -LiteralPath $fullpath
+      Add-SPSolution -LiteralPath $packagefullpath
   }
 
   $count = 0
@@ -84,30 +88,31 @@ Execute the following steps on the server running the central administration:
   }
 
   if ($null -eq $solution) {
-      Write-Error "Solution $packageName could not be found."
-      throw ("Solution $packageName could not be found.")
+      Write-Error "Solution $packageName could not be found in the farm."
+      throw ("Solution $packageName could not be found in the farm.")
   }
 
   # Always wait at least 5 seconds to avoid that Install-SPSolution does not actually trigger deployment
   Start-Sleep -Seconds 5
-  Write-Host "Deploying solution $packageName to the farm..."
-  # If -local is omitted, solution files will be deployed in all servers that run service "Microsoft SharePoint Foundation Web Application", but it may fail due to reliability issues in SharePoint
+  Write-Host "Deploying solution $packageName on the local server..."
+  # Set -local in Install-SPSolution to deploy the bits on this server only and prevent reliability issues in SharePoint
   Install-SPSolution -Identity $packageName -GACDeployment -Local
   ```
 
 - Visit central administration > System Settings > Manage farm solutions: Confirm the solution is "Globally deployed".
 
-{{< alert icon="💡" text="If you ran `Install-SPSolution` with `-Local`, but not on every SharePoint server running the service \"Microsoft SharePoint Foundation Web Application\", the solution will NOT be \"Globally deployed\" and SharePoint will NOT activate AzureCP features." />}}
+{{< alert icon="💡" text="If you did not run `Install-SPSolution -Local` on every SharePoint server running the service \"Microsoft SharePoint Foundation Web Application\" and/or the central administration, the solution will NOT be \"Globally deployed\" and SharePoint will NOT activate AzureCP features." />}}
 
-## Finish the installation
+## Finalize the installation
 
-For every other SharePoint server which **does NOT run the service "Microsoft SharePoint Foundation Web Application"**, AzureCP bits (azurecp.dll and its dependent assemblies) must be added manually to their GAC using these steps:
+{{< alert icon="💡" text="This applies to both install (`Install-SPSolution`) and update (`Update-SPSolution`) scenarios." />}}
 
-{{< alert icon="💡" text="This applies regardless of how `Install-SPSolution` or `Update-SPSolution` was executed" />}}
+This step is **very important** and applies to **all** SharePoint servers which do **NOT run the service "Microsoft SharePoint Foundation Web Application" and/or the central administration**.  
+For each of those servers, complete the steps below to manually add/update AzureCP bits (azurecp.dll and its dependent assemblies) in the GAC:
 
 - Download the package ['AzureCP-XXXX-dependencies.zip'](https://github.com/Yvand/AzureCP/releases) corresponding to the version you downloaded (expand the "Assets" to find it).
-- Unzip the archive to a local folder.
-- Run the script below to add AzureCP.dll to the GAC:
+- Use [7-zip](https://www.7-zip.org/) to extract the DLLs in a local folder.
+- Run the script below to add the assemblies in the GAC:
 
   ```powershell
   <#
@@ -152,7 +157,8 @@ For every other SharePoint server which **does NOT run the service "Microsoft Sh
   }
   ```
 
-- Restart the IIS service and the SharePoint timer service (SPTimerV4).
+- Restart the IIS service and the SharePoint timer service (SPTimerV4):  
+`Restart-Service W3SVC; Restart-Service SPTimerV4`
 
 ## Enable the claims provider
 
