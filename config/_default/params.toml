@@ -4,7 +4,7 @@
 title = "AzureCP"
 titleSeparator = "-"
 titleAddition = "Claims provider for Azure AD authentication in SharePoint Subscription / 2019 / 2016 / 2013"
-description = "AzureCP connects SharePoint with Active Directory and LDAP servers to enhance the people picker with a great search experience in federated authentication"
+description = "AzureCP connects SharePoint Subscription / 2019 / 2016 / 2013 with Azure Active Directory to fix the search in the people picker in Azure AD authentication"
 
 ## Open Graph + Twitter Cards
 #images = ["doks.png"]
