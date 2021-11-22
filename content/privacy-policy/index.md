@@ -26,5 +26,3 @@ __TLDR__: Neither this site nor this project collects any personal data.
 - No information is shared with advertising companies.
 - No information is mined and harvested for personal and behavioral trends.
 - No information is monetized.
-
-Effective Date: _17th May 2021_

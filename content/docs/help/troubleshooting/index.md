@@ -41,7 +41,7 @@ You can use [ULSViewer](https://www.microsoft.com/en-us/download/details.aspx?id
 
 You can import the collection below in [Postman](https://www.postman.com/) to replay the typical queries issued by AzureCP:
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/7f2fca601fa9be1d8bb8)
+[Run in Postman](https://app.getpostman.com/run-collection/7f2fca601fa9be1d8bb8)
 
 ## Test connectivity with Azure AD
 

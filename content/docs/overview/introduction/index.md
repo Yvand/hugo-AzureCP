@@ -18,7 +18,7 @@ toc: true
 AzureCP is useful when SharePoint is federated with Azure Active Directory using [WS-Federation](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial) or [OpenID Connect](https://docs.microsoft.com/en-us/sharepoint/security-for-sharepoint-server/oidc-1-0-authentication).  
 It runs inside SharePoint and queries your Azure Active Directory tenant(s) to find users and groups:
 
-![people-picker-AzureCP](/images/people-picker-AzureCP.png)
+![Image](people-picker-AzureCP.png "")
 
 To query your Azure Active Directory tenant, AzureCP needs an app registration which you have to [create]({{< ref "/docs/usage/register-application" >}}).
 

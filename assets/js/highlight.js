@@ -8,16 +8,18 @@ import ini from 'highlight.js/lib/languages/ini';
 import yaml from 'highlight.js/lib/languages/yaml';
 import markdown from 'highlight.js/lib/languages/markdown';
 import powershell from 'highlight.js/lib/languages/powershell';
+import sql from 'highlight.js/lib/languages/sql';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('json', json);
 hljs.registerLanguage('bash', bash);
-hljs.registerLanguage('html', xml);
+hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('ini', ini);
 hljs.registerLanguage('toml', ini);
 hljs.registerLanguage('yaml', yaml);
 hljs.registerLanguage('md', markdown);
 hljs.registerLanguage('powershell', powershell);
+hljs.registerLanguage('sql', powershell);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('pre code:not(.language-mermaid)').forEach((block) => {
