@@ -6,13 +6,18 @@ titleSeparator = "-"
 titleAddition = "Claims provider for Azure AD authentication in SharePoint Subscription / 2019 / 2016 / 2013"
 description = "AzureCP connects SharePoint Subscription / 2019 / 2016 / 2013 with Azure Active Directory to fix the search in the people picker in Azure AD authentication"
 
-## Open Graph + Twitter Cards
+## Documentation
+# docsVersion = "0.3"
+
+## Open Graph
 #images = ["doks.png"]
+ogLocale = "en_US"
+domainTLD = "azurecp.yvand.net"
+titleHome = "AzureCP"
+
+## Twitter Cards
 #twitterSite = "yvand"
 #twitterCreator = "yvand"
-#facebookAuthor = "yvand.duhamel"
-#facebookPublisher = "yvand.duhamel"
-ogLocale = "en_US"
 
 ## JSON-LD
 schemaType = "Organization"
@@ -34,6 +39,7 @@ bgColor = "#fff"
 landscapePhotoWidths = [900, 800, 700, 600, 500]
 portraitPhotoWidths = [800, 700, 600, 500]
 lqipWidth = "20x"
+smallLimit = "300"
 
 # Footer
 # footer = "Powered by <a href=\"https://www.netlify.com/\">Netlify</a>, <a href=\"https://gohugo.io/\">Hugo</a>, and <a href=\"https://getdoks.org/\">Doks</a>"
@@ -45,7 +51,8 @@ alertText = "Like AzureCP? <a class=\"alert-link\" href=\"https://github.com/Yva
 
 # Edit Page
 docsRepo = "https://github.com/Yvand/hugo-AzureCP"
-editPage = true
+docsRepoBranch = "main"
+editPage = false
 
 [options]
   lazySizes = true
@@ -58,3 +65,5 @@ editPage = true
   highLight = true
   kaTex = false
   collapsibleSidebar = false
+  multilingualMode = false
+  docsVersioning = false
