@@ -67,10 +67,10 @@ $response = Invoke-RestMethod "https://login.microsoftonline.com/$tenantName/oau
 $response | ConvertTo-Json
 ```
 
-## Inspect the actual traffic between AzureCP and Azure AD
+## Inspect the traffic to Azure AD
 
-You can redirect the traffic between AzureCP and Azure AD through Fiddler to inspect it.
-Once Fiddler was installed locally and its root certificate trusted, you can do it per web application by updating the web.config:
+You can intercept and inspect the traffic between AzureCP and Azure AD using [Fiddler Classic](https://www.telerik.com/fiddler/fiddler-classic).  
+Once Fiddler was installed locally and its root certificate trusted, you can intercept the traffic per web application by updating the web.config:
 
 ```xml
 <system.net>
@@ -79,3 +79,5 @@ Once Fiddler was installed locally and its root certificate trusted, you can do 
     </defaultProxy>
 </system.net>
 ```
+
+{{< alert icon="💡" text="In Fiddler, make sure to set the filter to \"All Processes\" or \"Non-Browsers\" (in the bottom left) to view the traffic." />}}
