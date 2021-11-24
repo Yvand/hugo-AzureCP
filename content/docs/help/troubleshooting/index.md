@@ -13,44 +13,35 @@ weight: 950
 toc: true
 ---
 
-## Check the SharePoint logs
+## Inspect the SharePoint logs
 
-AzureCP records all its activity in SharePoint logs, including the performance, queries and number of results returned for each LDAP server.
-
-Get AzureCP logging level:
+AzureCP records all its activity in the SharePoint logs, under Product / Area "AzureCP". It records a lot of information and can be managed with PowerShell:
 
 ```powershell
+# Show the AzureCP logging level
 Get-SPLogLevel| ?{$_.Area -like "AzureCP"}
-```
-
-Set AzureCP logging level:
-
-```powershell
+# Set AzureCP logging level
 "AzureCP:*"| Set-SPLogLevel -TraceSeverity Verbose
+# Merge AzureCP logs from all servers from the past 10 minutes
+Merge-SPLogFile -Path "C:\Data\AzureCP_logging.log" -Overwrite -Area "AzureCP" -StartTime (Get-Date).AddMinutes(-10)
 ```
 
-Merge AzureCP logs from all servers from the past 10 minutes:
+You can use [ULS Viewer](https://www.microsoft.com/en-us/download/details.aspx?id=44020) to inspect the logs.
 
-```powershell
-Merge-SPLogFile -Path "C:\Data\LDAPCP_logging.log" -Overwrite -Area "AzureCP" -StartTime (Get-Date).AddMinutes(-10)
-```
+## Run Microsoft Graph queries in Postman
 
-You can use [ULSViewer](https://www.microsoft.com/en-us/download/details.aspx?id=44020) to apply this filter and monitor the logs in real time.
+You can import the collection below in [Postman](https://www.postman.com/) to replay the typical queries executed by AzureCP:
 
-## Test Microsoft Graph queries in Postman
-
-You can import the collection below in [Postman](https://www.postman.com/) to replay the typical queries issued by AzureCP:
-
-[Run in Postman](https://app.getpostman.com/run-collection/7f2fca601fa9be1d8bb8)
+[Open Postman collection for AzureCP](https://app.getpostman.com/run-collection/7f2fca601fa9be1d8bb8)
 
 ## Test connectivity with Azure AD
 
 AzureCP may fail to connect to Azure AD for various reasons. The PowerShell script below connects to the typical Azure endpoints and may be run on the SharePoint servers to test the connectivity:
 
 ```powershell
-Invoke-WebRequest -Uri https://login.windows.net -UseBasicParsing
-Invoke-WebRequest -Uri https://login.microsoftonline.com -UseBasicParsing
-Invoke-WebRequest -Uri https://graph.microsoft.com -UseBasicParsing
+Invoke-WebRequest -Uri "https://login.windows.net" -UseBasicParsing
+Invoke-WebRequest -Uri "https://login.microsoftonline.com" -UseBasicParsing
+Invoke-WebRequest -Uri "https://graph.microsoft.com" -UseBasicParsing
 ```
 
 ## Obtain the access token using PowerShell
@@ -80,4 +71,4 @@ Once Fiddler was installed locally and its root certificate trusted, you can int
 </system.net>
 ```
 
-{{< alert icon="💡" text="In Fiddler, make sure to set the filter to \"All Processes\" or \"Non-Browsers\" (in the bottom left) to view the traffic." />}}
+{{< alert icon="💡" text="To view the traffic in Fiddler, make sure to set the filter to \"All Processes\" or \"Non-Browsers\" (in the bottom left)." />}}
