@@ -20,11 +20,17 @@ It runs inside SharePoint and queries your Azure Active Directory tenant(s) to f
 
 ![Image](people-picker-AzureCP.png "")
 
-To query your Azure Active Directory tenant, AzureCP needs an app registration which you have to [create]({{< ref "/docs/usage/register-application" >}}).
-
 ## Compatibility
 
 AzureCP is fully compatible with all the supported versions of SharePoint Server: SharePoint Subscription, SharePoint 2019, SharePoint 2016 and SharePoint 2013.
+
+## Prerequisites
+
+- AzureCP 18+ requires at least [.NET Framework 4.7.2](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472) on all SharePoint servers.
+- AzureCP 17 requires at least [.NET Framework 4.6.1](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net461) on all SharePoint servers.
+- **All** SharePoint servers need to be able to connect to Internet. [Read this]({{< ref "/docs//usage/configuration#configure-proxy-for-internet-access" >}}) if you need to configure a proxy.
+- Azure AD administrator needs to [create an app registration]({{< ref "/docs/usage/register-application" >}}) for AzureCP.
+- AzureCP requires permissions Group.Read.All and User.Read.All in Azure AD.
 
 ## Features
 
