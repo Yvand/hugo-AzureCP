@@ -50,7 +50,7 @@
     "highlight.js": "^11.3.1",
     "hugo-installer": "^3.0.1",
     "instant.page": "^5.1",
-    "katex": "^0.13.24",
+    "katex": "^0.15.2",
     "lazysizes": "^5.3",
     "markdownlint-cli": "^0.29.0",
     "mermaid": "^8.13.4",
