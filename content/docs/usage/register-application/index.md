@@ -22,6 +22,8 @@ If you are not a global administrator, you need to have permissions to [create a
 
 AzureCP needs application (not delegated) permissions Group.Read.All and User.Read.All.
 
+![Image](aad-azurecp-permissions.png "At the end of the configuration, the app should have only those permissions")
+
 ## Create the app registration
 
 You can register the application using either:
@@ -39,9 +41,8 @@ You can register the application using either:
 1. Click on "Register"
 1. Click on "API permissions"
     * Remove the default permission.
-    * Add a permission > Select "Microsoft Graph" > "Application permissions". Find and add "Group.Read.All" and "User.Read.All"
+    * Add a permission > Select "Microsoft Graph" > "Application permissions". Select "Group.Read.All" and "User.Read.All"
     * Click on "Grant admin consent for TenantName" > Yes
-{{< alert icon="💡" text="After this operation, you should have only permissions \"Group.Read.All\" and \"User.Read.All\", of type \"Application\", with status \"Granted\"." />}}
 1. Click on "Certificates & secrets": AzureCP supports both a certificate and a secret, choose either option depending on your needs.
 
 ### Create the app registration using m365 cli
@@ -61,8 +62,8 @@ However, with the current version (v3.10.0 at the time of this writing), the adm
 
 ### Create the app registration using az cli
 
-This script creates the application, adds a secret, sets the permissions and grants the admin consent.  
-It can be used in Azure cloud shell or in a regular shell:
+This bash script creates the application, adds a secret, sets the permissions and grants the admin consent.  
+It can be used in Azure cloud shell or in a local shell:
 
 ```bash
 # Sign-in to Azure AD tenant. Use --allow-no-subscriptions if it doesn't have a subscription
