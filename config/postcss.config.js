@@ -21,8 +21,12 @@ module.exports = {
         'th',
         'td',
         'h5',
+        'alert-link',
+        'container-xxl',
+        'container-fluid',
         ...whitelister([
           './node_modules/@hyas/doks/assets/scss/common/_variables.scss',
+          './node_modules/@hyas/doks/assets/scss/components/_alerts.scss',
           './node_modules/@hyas/doks/assets/scss/components/_buttons.scss',
           './node_modules/@hyas/doks/assets/scss/components/_code.scss',
           './node_modules/@hyas/doks/assets/scss/components/_syntax.scss',

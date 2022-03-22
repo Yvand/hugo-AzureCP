@@ -22,7 +22,7 @@ If you are not a global administrator, you need to have permissions to [create a
 
 AzureCP needs application (not delegated) permissions Group.Read.All and User.Read.All.
 
-![Image](aad-azurecp-permissions.png "At the end of the configuration, the app should have only those permissions")
+![Image](/images/aad-azurecp-permissions.png "At the end of the configuration, the app should have only those permissions")
 
 ## Create the app registration
 

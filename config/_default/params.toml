@@ -21,10 +21,21 @@ titleHome = "AzureCP"
 
 ## JSON-LD
 schemaType = "Organization"
-#schemaLogo = "logo-doks.png"
-#schemaTwitter = "https://twitter.com/yvand"
-schemaLinkedIn = "https://www.linkedin.com/in/yvand/"
-schemaGitHub = "https://github.com/Yvand"
+schemaName = "AzureCP"
+schemaAuthor = "Yvan Duhamel"
+schemaAuthorTwitter = "https://twitter.com/yvand"
+schemaAuthorLinkedIn = "https://www.linkedin.com/in/yvand/"
+schemaAuthorGitHub = "https://github.com/Yvand"
+schemaLocale = "en-US"
+schemaLogo = "logo-doks.png"
+schemaLogoWidth = 512
+schemaLogoHeight = 512
+schemaImage = "doks.png"
+schemaImageWidth = 1280
+schemaImageHeight = 640
+schemaTwitter = "https://twitter.com/yvand"
+schemaLinkedIn = ""
+schemaGitHub = "https://github.com/Yvand/AzureCP"
 schemaSection = "blog"
 
 ## Sitelinks Search Box
@@ -42,17 +53,24 @@ lqipWidth = "20x"
 smallLimit = "300"
 
 # Footer
-# footer = "Powered by <a href=\"https://www.netlify.com/\">Netlify</a>, <a href=\"https://gohugo.io/\">Hugo</a>, and <a href=\"https://getdoks.org/\">Doks</a>"
-footer = "Site built with <a href=\"https://gohugo.io/\" class=\"gdoc-footer__link\">Hugo</a>. Project developed and maintained with ❤️ by <a href=\"https://www.linkedin.com/in/yvand/\" class=\"gdoc-footer__link\">Yvan Duhamel</a>."
+footer = "Site built with <a href=\"https://gohugo.io/\" class=\"gdoc-footer__link\" target=\"_blank\">Hugo</a> and <a class=\"gdoc-footer__link\" href=\"https://getdoks.org/\" target=\"_blank\">Doks</a>. Project developed and maintained with ❤️ by <a href=\"https://www.linkedin.com/in/yvand/\" class=\"gdoc-footer__link\" target=\"_blank\">Yvan Duhamel</a>."
+
+# Feed
+copyRight = "Copyright (c) 2020-2022 Yvan Duhamel"
 
 # Alert
 alert = false
+alertDismissable = true
 alertText = "Like AzureCP? <a class=\"alert-link\" href=\"https://github.com/Yvand/AzureCP/stargazers\">Star on GitHub</a>. Thanks!</a>"
 
 # Edit Page
+# repoHost [Github | Gitea | GitLab | Bitbucket | BitbucketServer ] is used for building the edit link based on git hoster
+repoHost = "GitHub"
 docsRepo = "https://github.com/Yvand/hugo-AzureCP"
 docsRepoBranch = "main"
+docsRepoSubPath = ""
 editPage = false
+lastMod = true
 
 [options]
   lazySizes = true
@@ -64,6 +82,11 @@ editPage = false
   breadCrumb = false
   highLight = true
   kaTex = false
-  collapsibleSidebar = false
   multilingualMode = false
   docsVersioning = false
+  fullWidth = true
+
+[menu]
+  [menu.section]
+    auto = true
+    collapsibleSidebar = false
