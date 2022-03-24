@@ -88,5 +88,5 @@ lastMod = true
 
 [menu]
   [menu.section]
-    auto = true
+    auto = false
     collapsibleSidebar = false
