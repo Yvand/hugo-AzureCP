@@ -1,7 +1,7 @@
 ---
-title: "Register an application in Azure AD"
+title: "Grant acces to Azure AD"
 description: ""
-lead: "This page will guide through the steps you to register an application for AzureCP in your Azure AD tenant and grant the required permissions."
+lead: "This page will guide through the steps to grant AzureCP access to your Azure AD tenant, by creating an app registration."
 date: 2021-05-20T10:45:06Z
 lastmod: 2021-08-06T11:15:29Z
 draft: false
@@ -20,9 +20,9 @@ If you are not a global administrator, you need to have permissions to [create a
 
 ## Permissions required
 
-AzureCP needs application (not delegated) permissions Group.Read.All and User.Read.All.
+AzureCP requires permissions `Group.Read.All` and `User.Read.All` of type application (not delegated):
 
-![Image](aad-azurecp-permissions.png "At the end of the configuration, the app should have only those permissions")
+![Image](aad-azurecp-permissions.png "At the end of the configuration, the permissions should be exactly like this.")
 
 ## Create the app registration
 
@@ -41,7 +41,7 @@ You can register the application using either:
 1. Click on "Register"
 1. Click on "API permissions"
     * Remove the default permission.
-    * Add a permission > Select "Microsoft Graph" > "Application permissions". Select "Group.Read.All" and "User.Read.All"
+    * Add a permission > Select "Microsoft Graph" > "Application permissions". Select `Group.Read.All` and `User.Read.All`.
     * Click on "Grant admin consent for TenantName" > Yes
 1. Click on "Certificates & secrets": AzureCP supports both a certificate and a secret, choose either option depending on your needs.
 
