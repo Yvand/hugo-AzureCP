@@ -20,7 +20,7 @@ If you are not a global administrator, you need to have permissions to [create a
 
 ## Permissions required
 
-AzureCP requires permissions `Group.Read.All` and `User.Read.All` of type application (not delegated):
+AzureCP requires permissions `GroupMember.Read.All` and `User.Read.All` of type application (not delegated):
 
 ![Image](aad-azurecp-permissions.png "At the end of the configuration, the permissions should be exactly like this.")
 
@@ -41,21 +41,21 @@ You can register the application using either:
 1. Click on "Register"
 1. Click on "API permissions"
     * Remove the default permission.
-    * Add a permission > Select "Microsoft Graph" > "Application permissions". Select `Group.Read.All` and `User.Read.All`.
+    * Add a permission > Select "Microsoft Graph" > "Application permissions". Select `GroupMember.Read.All` and `User.Read.All`.
     * Click on "Grant admin consent for TenantName" > Yes
 1. Click on "Certificates & secrets": AzureCP supports both a certificate and a secret, choose either option depending on your needs.
 
 ### Create the app registration using m365 cli
 
 [M365 cli](https://pnp.github.io/cli-microsoft365/) is very simple: It takes only 1 command to create the application, create a secret and set the permissions.  
-However, with the current version (v3.10.0 at the time of this writing), the admin consent needs to be granted manually.
+However, with the current version (v5.1.0 at the time of this writing), the admin consent needs to be granted manually.
 
 1. Create the application:
 
     ```bash
     m365 login
     # m365 aad app add will return all the information that AzureCP needs to connect.
-    m365 aad app add --name "AzureCP" --withSecret --apisApplication 'https://graph.microsoft.com/Group.Read.All,https://graph.microsoft.com/User.Read.All'
+    m365 aad app add --name "AzureCP" --withSecret --apisApplication 'https://graph.microsoft.com/User.Read.All,https://graph.microsoft.com/GroupMember.Read.All'
     ```
 
 1. Grant the admin consent to the app registration through the admin portal (see the steps in the creation through the Azure portal above)
@@ -85,25 +85,25 @@ echo "Application '$appName' was created with client id '$appId', and its servic
 appSecret=$(az ad app credential reset --id $appId -o tsv | cut -f3)
 
 # Retrieve the id of the permissions to grant
-groupReadAllId=$(az ad sp show --id 00000003-0000-0000-c000-000000000000 --query "appRoles[?value=='Group.Read.All'].id" --output tsv)
-userReadAllId=$(az ad sp show --id 00000003-0000-0000-c000-000000000000 --query "appRoles[?value=='User.Read.All'].id" --output tsv)
+userPermId=$(az ad sp show --id 00000003-0000-0000-c000-000000000000 --query "appRoles[?value=='User.Read.All'].id" --output tsv)
+groupPermId=$(az ad sp show --id 00000003-0000-0000-c000-000000000000 --query "appRoles[?value=='GroupMember.Read.All'].id" --output tsv)
 msGraphResourceId=$(az ad sp show --id 00000003-0000-0000-c000-000000000000 --query "objectId" --output tsv)
 
 # Add the permissions required to the definition of the application (optional as it is just a declaration of the permissions needed)
 az ad app update --id $appId --required-resource-accesses "[{
         \"resourceAppId\": \"00000003-0000-0000-c000-000000000000\",
         \"resourceAccess\": [{
-                        \"id\": \"$userReadAllId\",
+                        \"id\": \"$userPermId\",
                         \"type\": \"Role\"
                 },
                 {
-                        \"id\": \"$groupReadAllId\",
+                        \"id\": \"$groupPermId\",
                         \"type\": \"Role\"
                 }
         ]
         }]"
 
-echo "Grant permissions Group.Read.All (id '$groupReadAllId') and User.Read.All (id '$userReadAllId') on resource Microsoft Graph with id '$msGraphResourceId' to service principal '$spObjectId'..."
+echo "Grant admin consent to Microsoft Graph permissions User.Read.All (id '$userPermId') and GroupMember.Read.All (id '$groupPermId') for service principal '$spObjectId'..."
 # Wait before granting the permissions to avoid error "Request_ResourceNotFound" on the service principal just created
 sleep 20
 # Grant permissions to the service principal of the application
@@ -112,7 +112,7 @@ az rest --method POST \
         --body "{
         \"principalId\": \"$spObjectId\",
         \"resourceId\": \"$msGraphResourceId\",
-        \"appRoleId\": \"$userReadAllId\"
+        \"appRoleId\": \"$userPermId\"
         }"
 
 az rest --method POST \
@@ -120,7 +120,7 @@ az rest --method POST \
         --body "{
         \"principalId\": \"$spObjectId\",
         \"resourceId\": \"$msGraphResourceId\",
-        \"appRoleId\": \"$groupReadAllId\"
+        \"appRoleId\": \"$groupPermId\"
         }"
 
 echo "Application $appName was created with client id '$appId' and client secret '$appSecret'"

@@ -29,8 +29,7 @@ AzureCP is fully compatible with all the supported versions of SharePoint Server
 - AzureCP 18+ requires at least [.NET Framework 4.7.2](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472) on all SharePoint servers.
 - AzureCP 17 requires at least [.NET Framework 4.6.1](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net461) on all SharePoint servers.
 - **All** SharePoint servers need to be able to connect to Internet. [Read this]({{< ref "/docs/usage/configuration#configure-proxy-for-internet-access" >}}) if you need to configure a proxy.
-- Azure AD administrator needs to [create an app registration]({{< ref "/docs/usage/register-application" >}}) for AzureCP.
-- AzureCP requires permissions Group.Read.All and User.Read.All in Azure AD.
+- An [application registered in Azure AD]({{< ref "/docs/usage/register-application" >}}) with Microsoft Graph permissions `GroupMember.Read.All` and `User.Read.All` granted.
 
 ## Features
 
