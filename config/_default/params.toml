@@ -52,6 +52,10 @@ portraitPhotoWidths = [800, 700, 600, 500]
 lqipWidth = "20x"
 smallLimit = "300"
 
+### Image template
+defaultImage = "default-image.png" # put in `./assets/images/`
+fillImage = "1270x740 Center" # normalize image size
+
 # Footer
 footer = "Site built with <a href=\"https://gohugo.io/\" class=\"gdoc-footer__link\" target=\"_blank\">Hugo</a> and <a class=\"gdoc-footer__link\" href=\"https://getdoks.org/\" target=\"_blank\">Doks</a>. Project developed and maintained with ❤️ by <a href=\"https://www.linkedin.com/in/yvand/\" class=\"gdoc-footer__link\" target=\"_blank\">Yvan Duhamel</a>."
 
@@ -72,11 +76,16 @@ docsRepoSubPath = ""
 editPage = false
 lastMod = true
 
+[sections]
+  sectionNav = ["docs", "guides"]
+
 [options]
   lazySizes = true
   clipBoard = true
   instantPage = true
   flexSearch = true
+  searchSectionsShow = []
+  searchSectionsIndex = []
   darkMode = true
   bootStrapJs = true
   breadCrumb = false
@@ -85,6 +94,9 @@ lastMod = true
   multilingualMode = false
   docsVersioning = false
   fullWidth = true
+  navbarSticky = true
+  toTopButton = false
+  scrollSpy = false # experimental; needs Bootstrap >= 5.2.0-beta1
 
 [menu]
   [menu.section]
