@@ -47,18 +47,14 @@ You can register the application using either:
 
 ### Create the app registration using m365 cli
 
-[M365 cli](https://pnp.github.io/cli-microsoft365/) is very simple: It takes only 1 command to create the application, create a secret and set the permissions.  
-However, with the current version (v5.1.0 at the time of this writing), the admin consent needs to be granted manually.
+[M365 cli](https://pnp.github.io/cli-microsoft365/) makes the registration very simple: It takes only 1 command to create the application, create a secret, set the permissions and grant the admin consent&ast;.  
+&ast;: The ability to grant the admin consent was introduced in [version 5.7](https://pnp.github.io/cli-microsoft365/about/release-notes/#v570), with parameter `--grantAdminConsent`.
 
-1. Create the application:
-
-    ```bash
-    m365 login
-    # m365 aad app add will return all the information that AzureCP needs to connect.
-    m365 aad app add --name "AzureCP" --withSecret --apisApplication 'https://graph.microsoft.com/User.Read.All,https://graph.microsoft.com/GroupMember.Read.All'
-    ```
-
-1. Grant the admin consent to the app registration through the admin portal (see the steps in the creation through the Azure portal above)
+```bash
+m365 login
+# The command will print all the information that AzureCP needs to connect.
+m365 aad app add --name "AzureCP" --withSecret --apisApplication 'https://graph.microsoft.com/User.Read.All,https://graph.microsoft.com/GroupMember.Read.All' --grantAdminConsent
+```
 
 ### Create the app registration using az cli
 
