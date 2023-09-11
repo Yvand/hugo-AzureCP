@@ -36,17 +36,17 @@ You can import the collection below in [Postman](https://www.postman.com/) to re
 
 ## Test connectivity with Azure AD
 
-AzureCP may fail to connect to Azure AD for various reasons. The PowerShell script below connects to the typical Azure endpoints and may be run on the SharePoint servers to test the connectivity:
+AzureCP may fail to connect to Azure AD for various reasons. The PowerShell script below connects to the typical Azure endpoints and may be run on the SharePoint servers to test the connectivity (set or remove the proxy settings depending on your configuration):
 
 ```powershell
-Invoke-WebRequest -Uri "https://login.windows.net" -UseBasicParsing
-Invoke-WebRequest -Uri "https://login.microsoftonline.com" -UseBasicParsing
-Invoke-WebRequest -Uri "https://graph.microsoft.com" -UseBasicParsing
+Invoke-WebRequest -Uri "https://login.windows.net" -UseBasicParsing [-ProxyUseDefaultCredentials] [-Proxy "http://127.0.0.1:8888"]
+Invoke-WebRequest -Uri "https://login.microsoftonline.com" -UseBasicParsing [-ProxyUseDefaultCredentials] [-Proxy "http://127.0.0.1:8888"]
+Invoke-WebRequest -Uri "https://graph.microsoft.com" -UseBasicParsing [-ProxyUseDefaultCredentials] [-Proxy "http://127.0.0.1:8888"]
 ```
 
 ## Obtain the access token using PowerShell
 
-This PowerShell script requests an access token to Microsoft Graph, as done by AzureCP:
+This PowerShell script requests an access token to Microsoft Graph, as done by AzureCP (set or remove the proxy settings depending on your configuration):
 
 ```powershell
 $clientId = "<CLIENTID>"
@@ -54,7 +54,7 @@ $clientSecret = "<CLIENTSECRET>"
 $tenantName = "<TENANTNAME>.onmicrosoft.com"
 $headers = @{ "Content-Type" = "application/x-www-form-urlencoded" }
 $body = "grant_type=client_credentials&client_id=$clientId&client_secret=$clientSecret&resource=https%3A//graph.microsoft.com/"
-$response = Invoke-RestMethod "https://login.microsoftonline.com/$tenantName/oauth2/token" -Method "POST" -Headers $headers -Body $body
+$response = Invoke-RestMethod "https://login.microsoftonline.com/$tenantName/oauth2/token" -Method "POST" -Headers $headers -Body $body [-ProxyUseDefaultCredentials] [-Proxy "http://127.0.0.1:8888"]
 $response | ConvertTo-Json
 ```
 
