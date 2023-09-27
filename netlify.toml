@@ -35,3 +35,18 @@
   [headers.values]
     Content-Security-Policy = "default-src 'self'; script-src 'self' https://code.jquery.com https://azfunc-repository-stats.azurewebsites.net;"
     cache-control = "max-age=0, must-revalidate, public"
+
+[[redirects]]
+  from = "/docs/*"
+  to = "https://entracp.yvand.net/docs-azurecp/overview"
+  status = 301
+
+[[redirects]]
+  from = "/privacy-policy"
+  to = "https://entracp.yvand.net/privacy-policy"
+  status = 301
+
+[[redirects]]
+  from = "/*"
+  to = "https://entracp.yvand.net/"
+  status = 301
